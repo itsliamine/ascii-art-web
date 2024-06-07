@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASCII Art Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <h1>{{.Title}}</h1>
-    <h1>{{printf "%s" .Body}}</h1>
+    <h1 class="text-3xl p-2 font-semibold bg-blue-500 text-white">ASCII Art Project</h1>
+    <form action="/ascii" class="shadow-lg p-4 w-56 flex flex-col gap-4">
+        <div class="flex flex-col gap-1">
+            <p>Input:</p>
+            <input type="text" name="input" id="input" class="border focus:ring-1 focus:ring-blue-500 rounded-sm p-1">
+        </div>
+        <p>Options:</p>
+        <select name="banner" id="banner" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-1">
+            <option value="standard">Standard</option>
+            <option value="thinkertoy">Thinkertoy</option>
+            <option value="shadow">Shadow</option>
+        </select>
+        <input class="bg-blue-500 p-2 font-semibold text-white rounded-md cursor-pointer" type="submit" value="Get ASCII Art">
+    </form>
+    <div class="p-4">
+        <h1>Output:</h1>
+        <div>{{printf "%s" .Body}}</div>
+    </div>
 </body>
 </html>
