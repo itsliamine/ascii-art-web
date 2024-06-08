@@ -7,9 +7,12 @@ type Page struct {
 	Body  []byte
 }
 
-func Save(p *Page) error {
-	filename := p.Title + ".txt"
-	return os.WriteFile(filename, p.Body, 0600)
+func Save(lines []string) error {
+	str := ""
+	for _, line := range lines {
+		str += line + "\n"
+	}
+	return os.WriteFile("content.txt", []byte(str), 0600)
 }
 
 func LoadPage(title string) (*Page, error) {
