@@ -5,24 +5,25 @@ import (
 	"strings"
 )
 
-func GetAscii(input, style string) string {
-	str := ""
+func GetAscii(input, style string) []string {
 	bannerFile, err := GetBannerFile(style)
 	if err != nil {
 		fmt.Println("Error:", err)
-		return ""
+		return []string{}
 	}
 	lines := make([]string, 0)
 	words := strings.Split(input, "\\n")
 	for _, word := range words {
 		if word == "" {
 			lines = append(lines, "")
-		} else {
-			lines = append(lines, GetWord(word, bannerFile)...)
+			continue
 		}
+		lines = append(lines, GetWord(word, bannerFile)...)
 	}
-	for _, line := range lines {
-		str += line + "\n"
+
+	for i := 0; i < len(lines); i++ {
+		lines[i] = strings.ReplaceAll(lines[i], " ", "&nbsp;")
 	}
-	return str
+
+	return lines
 }
