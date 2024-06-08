@@ -24,5 +24,36 @@ func GetAscii(input, style string) string {
 	for _, line := range lines {
 		str += line + "\n"
 	}
+
+	return str
+}
+
+func FormatHTML(s string) string {
+	str := ""
+	for i := 0; i < len(s); i++ {
+		prev, next := "", ""
+		if i == 0 {
+			prev = " "
+		} else {
+			prev = string(s[i-1])
+		}
+		if i == len(s)-1 {
+			next = " "
+		} else {
+			next = string(s[i+1])
+		}
+
+		if s[i] == ' ' {
+			if prev == " " && next != " " {
+				str += "&nbsp;"
+			} else if prev == " " && next == " " {
+				str += "&nbsp;"
+			} else {
+				str += " "
+			}
+		} else {
+			str += string(s[i])
+		}
+	}
 	return str
 }
