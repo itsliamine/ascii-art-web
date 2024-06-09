@@ -85,6 +85,8 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	input := r.FormValue("input")
 	style := r.FormValue("banner")
 
+	input = strings.Replace(input, "\r\n", "\n", -1)
+
 	if style == "" {
 		log.Printf("No banner provided: style: %s\n", style)
 		internalServerErrorHandler(w)

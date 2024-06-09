@@ -12,7 +12,8 @@ func GetAscii(input, style string) []string {
 		return []string{}
 	}
 	lines := make([]string, 0)
-	words := strings.Split(input, "\\n")
+	words := strings.Split(input, "\n")
+
 	for _, word := range words {
 		if word == "" {
 			lines = append(lines, "")
