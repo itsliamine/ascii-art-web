@@ -1,6 +1,9 @@
 package core
 
-import "os"
+import (
+	"os"
+	"strings"
+)
 
 // The FileOpen function in fileopen.go is responsible for reading the content of a file and returning it as a string.
 func FileOpen(filename string) string {
@@ -8,5 +11,6 @@ func FileOpen(filename string) string {
 	if err != nil {
 		return ""
 	}
-	return string(f)
+	content := strings.ReplaceAll(string(f), "\r\n", "\n")
+	return content
 }
