@@ -22,6 +22,7 @@ type PageData struct {
 func main() {
 	log.SetFlags(log.Ltime)
 	log.SetPrefix("ascii-web-server:")
+
 	http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/ascii", postHandler)
 
