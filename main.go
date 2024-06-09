@@ -131,7 +131,7 @@ func notFoundHandler(w http.ResponseWriter) {
 
 func badRequestHandler(w http.ResponseWriter) {
 	// Send 400 code
-	w.WriteHeader(http.StatusNotFound)
+	w.WriteHeader(http.StatusBadRequest)
 
 	// Parse the 400 template
 	t, err := template.ParseFiles("templates/400.html")
@@ -152,9 +152,9 @@ func badRequestHandler(w http.ResponseWriter) {
 
 func internalServerErrorHandler(w http.ResponseWriter) {
 	// Send 500 code
-	w.WriteHeader(http.StatusNotFound)
+	w.WriteHeader(http.StatusInternalServerError)
 
-	// Parse the 400 template
+	// Parse the 500 template
 	t, err := template.ParseFiles("templates/500.html")
 	if err != nil {
 		log.Printf("Error executing 500 template: %v", err)
@@ -162,7 +162,7 @@ func internalServerErrorHandler(w http.ResponseWriter) {
 		return
 	}
 
-	// Execute the 400 template
+	// Execute the 500 template
 	err = t.Execute(w, nil)
 	if err != nil {
 		log.Printf("Error executing 500 template: %v", err)
