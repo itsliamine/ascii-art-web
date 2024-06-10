@@ -4,7 +4,7 @@ This small project takes the main [Ascii Art Project](https://zone01normandie.or
 
 ## Authors
 
-- Fares Aoudia
+- Fares AOUDIA
 - Maxime TREBERT
 
 ## Code
@@ -93,7 +93,7 @@ The server handles error codes 404, 400 and 500 with a specific template for eac
   - `shadow.txt`
   - `thinkertoy.txt`
 
-### main.go
+### [main.go](main.go)
 
 The `main.go` file sets up the HTTP server and handles routing for the home page and the ASCII art generation. It includes functions for handling different HTTP requests and error responses.
 
@@ -283,7 +283,7 @@ These handlers render specific error pages when errors occur.
 
 Each handler ensures appropriate HTTP status codes are set and specific templates are rendered, logging any errors encountered.
 
-### fileopen.go
+### [fileopen.go](core/fileopen.go)
 
 The `fileopen.go` file contains a function to read the content of a file and return it as a string.
 
@@ -306,7 +306,7 @@ func FileOpen(filename string) string {
 
 ```
 
-### page.go
+### [page.go](core/page.go)
 
 The `page.go` file defines the `Page` struct and functions to save and load page data.
 
@@ -335,7 +335,7 @@ func LoadPage(title string) (*Page, error) {
 }
 ```
 
-### ascii-art.go
+### [ascii-art.go](ascii-art/ascii-art.go)
 
 The `ascii-art.go` file contains the main function to generate ASCII art from input text and a specified banner style.
 
@@ -372,7 +372,7 @@ func GetAscii(input, style string) []string {
 }
 ```
 
-### getbanner.go
+### [getbanner.go](ascii-art/getbanner.go)
 
 The `getbanner.go` file provides a function to get the path of the banner file based on the style argument.
 
@@ -395,7 +395,7 @@ func GetBannerFile(style string) (string, error) {
 }
 ```
 
-### getletter.go
+### [getletter.go](ascii-art/getletter.go)
 
 The `getletter.go` file defines the function to retrieve the ASCII representation of a single character from a banner.
 
@@ -440,7 +440,7 @@ func GetLetter(content string, ascii int) string {
 }
 ```
 
-### getword.go
+### [getword.go](ascii-art/getword.go)
 
 The `getword.go` file provides the function to generate ASCII art for an entire word by combining the ASCII representations of each character.
 
