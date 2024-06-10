@@ -46,6 +46,28 @@ The server handles error codes 404, 400 and 500 with a specific template for eac
     - Select a banner style from the dropdown menu.
     - Click "Get ASCII Art" to generate and display the ASCII art.
 
+    To use the existing test file `main_test.go` to test the provided Go program, you can follow these steps:
+
+## Test : How to Test 
+
+1. **Navigate to the Test File**: Locate the `main_test.go` file in the repository.
+
+2. **Review Test Cases**:
+
+    - **TestHomeHandler**: Verifies that the home handler returns a status code of 200 (OK).
+    - **TestNotFoundHandler**: Verifies that a non-existent route returns a status code of 404 (Not Found).
+    - **TestPostHandler**: Verifies that a valid POST request to the `/ascii` endpoint returns a status code of 302 (Found).
+    - **TestBadRequestHandler**: Verifies that a GET request to the `/ascii` endpoint returns a status code of 400 (Bad Request).
+    - **TestInternalServerErrorHandler**: Verifies that a malformed POST request to the `/ascii` endpoint returns a status code of 500 (Internal Server Error).
+
+3. **Run Tests**: Ensure that you are in the directory containing the `main_test.go` file and run:
+
+    ```
+    go test -v
+    ```
+
+    The `-v` flag stands for verbose output, which provides more detailed information about the tests being run.
+
 ## Implementation Details: Algorithm
 
 ### Arborescence
