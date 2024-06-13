@@ -1,15 +1,16 @@
 package asciiart
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 )
 
-func GetAscii(input, style string) []string {
+func GetAscii(input, style string) ([]string, error) {
 	bannerFile, err := GetBannerFile(style)
 	if err != nil {
 		fmt.Println("Error:", err)
-		return []string{}
+		return []string{}, errors.New(" ")
 	}
 	lines := make([]string, 0)
 	words := strings.Split(input, "\n")
@@ -19,12 +20,16 @@ func GetAscii(input, style string) []string {
 			lines = append(lines, "")
 			continue
 		}
-		lines = append(lines, GetWord(word, bannerFile)...)
+		getW, err := GetWord(word, bannerFile)
+		if err != nil {
+			return []string{}, errors.New("error 500")
+		}
+		lines = append(lines, getW...)
 	}
 
 	for i := 0; i < len(lines); i++ {
 		lines[i] = strings.ReplaceAll(lines[i], " ", "&nbsp;")
 	}
 
-	return lines
+	return lines, nil
 }

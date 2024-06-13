@@ -102,7 +102,11 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Generate ASCII art based on input and style
-	output := asciiart.GetAscii(input, style)
+	output, err := asciiart.GetAscii(input, style)
+	if err != nil {
+		internalServerErrorHandler(w)
+		return
+	}
 
 	// Save the generated ASCII art
 	err = core.Save(output)
